@@ -17,7 +17,8 @@ KUBELET_HOSTNAME="--hostname_override={{ inventory_hostname }}"
 # location of the api-server
 KUBELET_API_SERVER="--api_servers=http://{{ master_ip_address }}:8080"
 
-
+# pod infrastructure container
+KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=registry.access.redhat.com/rhel7/pod-infrastructure:latest"
 
 {% if dns_setup %}
 KUBELET_ARGS="--cluster_dns={{ dns_server }} --cluster_domain={{ dns_domain }}"

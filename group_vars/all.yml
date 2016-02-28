@@ -1,7 +1,7 @@
 # Account name of remote user. Ansible will use this user account to ssh into
 # the managed machines. The user must be able to use sudo without asking
 # for password.
-ansible_ssh_user: root
+ansible_ssh_user: centos
 
 # Kubernetes internal network for services.
 # Kubernetes services will get fake IP addresses from this range.
@@ -12,9 +12,9 @@ kube_service_addresses: 10.254.0.0/16
 # Flannel internal network (optional). When flannel is used, it will assign IP
 # addresses from this range to individual pods.
 # This network must be unused in your network infrastructure!
-kube_overlay_ip: 4.0.0.0
+kube_overlay_ip: 172.16.0.0
 # Prefix length of kube_overlay_ip range.
-kube_overlay_prefix: 16
+kube_overlay_prefix: 12
 
 
 # Internal DNS configuration.
@@ -26,7 +26,7 @@ kube_overlay_prefix: 16
 # Kubernetes won't do this for you (yet).
 
 # Turn this varable to 'false' to disable whole DNS configuration.
-dns_setup: true
+dns_setup: false
 
 # Internal DNS domain name.
 # This domain must not be used in your network. Services will be discoverable
@@ -52,3 +52,5 @@ kube_aws_create_etc_hosts: false
 
 # Name of the cluster to create. It must be unique in your AWS account.
 kube_aws_cluster_name: mykube
+
+flannel_etcd_key:  /atomic01/network

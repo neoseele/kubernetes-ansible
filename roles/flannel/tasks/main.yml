@@ -6,12 +6,17 @@
 - name: Install Flannel config file
   template: src=flanneld.j2 dest=/etc/sysconfig/flanneld
   notify:
-          - restart flannel
+    - restart flannel
+
+- name: Create docker.service.d directory
+  file: path=/etc/systemd/system/docker.service.d/ state=directory mode=0755
+
+- name: Install 10-flanneld-network.conf
+  copy: src=10-flanneld-network.conf dest=/etc/systemd/system/docker.service.d/10-flanneld-network.conf
 
 - name: Launch Flannel
   service: name=flanneld state=started enabled=yes
   notify:
-          - stop docker
-          - delete docker0
-          - start docker
-          - restart kubelet
+    - restart docker
+    - restart kubelet
+

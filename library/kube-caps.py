@@ -38,7 +38,7 @@ def main():
         facts['kube_node_via_api'] = False
         facts['kubelet_use_pre_v10_vars'] = True
 
-    args = ("kubectl", "apiversions")
+    args = ("kubectl", "api-versions")
     popen = subprocess.Popen(args, stdout=subprocess.PIPE)
     popen.wait()
 
