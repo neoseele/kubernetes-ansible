@@ -7,3 +7,8 @@
 [minions]
 192.168.122.60
 192.168.122.87
+192.168.122.31
+
+[minions:vars]
+master_ip_address=192.168.122.78
+etcd_ip_address=192.168.122.78

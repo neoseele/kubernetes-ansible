@@ -53,4 +53,5 @@ kube_aws_create_etc_hosts: false
 # Name of the cluster to create. It must be unique in your AWS account.
 kube_aws_cluster_name: mykube
 
+# Flannel etcd key
 flannel_etcd_key:  /atomic01/network
